@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simplified Settings Menu</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        .settings-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            max-width: 800px;
+            width: 90%;
+            overflow: hidden;
+        }
+
+        .settings-navigation {
+            width: 200px;
+            background-color: #f6f8fa;
+            border-right: 1px solid #ddd;
+        }
+
+        .settings-navigation ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .settings-navigation li {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .settings-navigation li:hover,
+        .settings-navigation li.active {
+            background-color: #e1e4e8;
+        }
+
+        .settings-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .settings-section {
+            display: none;
+        }
+
+        .settings-section.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="settings-container">
+        <div class="settings-navigation">
+            <ul>
+                <li data-section="profile" class="active">Profile</li>
+                <li data-section="account">Account</li>
+                <li data-section="notifications">Notifications</li>
+                <li data-section="security">Security</li>
+            </ul>
+        </div>
+        <div class="settings-content">
+            <div id="profile" class="settings-section active">
+                <h2>Profile Settings</h2>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" value="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" value="john.doe@example.com">
+                </div>
+                <button>Update Profile</button>
+            </div>
+            <div id="account" class="settings-section">
+                <h2>Account Settings</h2>
+                <p>Change your username, delete account, etc.</p>
+            </div>
+            <div id="notifications" class="settings-section">
+                <h2>Notification Settings</h2>
+                <p>Manage your email preferences.</p>
+            </div>
+            <div id="security" class="settings-section">
+                <h2>Security Settings</h2>
+                <p>Change password, two-factor authentication.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const navItems = document.querySelectorAll('.settings-navigation li');
+        const sections = document.querySelectorAll('.settings-section');
+
+        navItems.forEach(navItem => {
+            navItem.addEventListener('click', () => {
+                // Deactivate all nav items and sections
+                navItems.forEach(item => item.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+
+                // Activate the clicked nav item and corresponding section
+                navItem.classList.add('active');
+                const sectionId = navItem.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
