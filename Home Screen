@@ -1,0 +1,28 @@
+// This Figma plugin script creates a home screen layout with a header and logo
+
+const frame = figma.createFrame();
+frame.resize(375, 812); // iPhone screen size
+frame.name = "Home Screen";
+frame.fills = [{ type: "SOLID", color: { r: 1, g: 1, b: 1 } }];
+
+// Add header
+const header = figma.createRectangle();
+header.resize(375, 80);
+header.fills = [{ type: "SOLID", color: { r: 0.1, g: 0.2, b: 0.3 } }];
+header.y = 0;
+
+// Add logo (as text for now)
+const logo = figma.createText();
+logo.characters = "MyApp Logo";
+logo.fontSize = 24;
+logo.fills = [{ type: "SOLID", color: { r: 1, g: 1, b: 1 } }];
+logo.x = 20;
+logo.y = 25;
+
+// Add to frame
+frame.appendChild(header);
+frame.appendChild(logo);
+
+// Center the layout in the viewport
+figma.currentPage.appendChild(frame);
+figma.viewport.scrollAndZoomIntoView([frame]);
