@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Storage Example</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input { margin: 10px 0; padding: 5px; }
+  </style>
+</head>
+<body>
+
+  <h2>Save Item to Local Storage</h2>
+
+  <label for="itemInput">Enter Item:</label>
+  <input type="text" id="itemInput" placeholder="Type something..." />
+  <button onclick="saveItem()">Save</button>
+  <button onclick="loadItem()">Load</button>
+  <p id="output"></p>
+
+  <script>
+    function saveItem() {
+      const item = document.getElementById('itemInput').value;
+      localStorage.setItem('savedItem', item);
+      alert('Item saved to local storage!');
+    }
+
+    function loadItem() {
+      const saved = localStorage.getItem('savedItem');
+      const output = document.getElementById('output');
+      if (saved) {
+        output.textContent = `Saved item: ${saved}`;
+      } else {
+        output.textContent = 'No item found in local storage.';
+      }
+    }
+  </script>
+
+</body>
+</html>
