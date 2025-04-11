@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Integration Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { padding: 10px 20px; margin-bottom: 20px; }
+    .user-card { border: 1px solid #ccc; padding: 15px; width: 300px; background-color: #f9f9f9; }
+    img { max-width: 100px; border-radius: 50%; }
+  </style>
+</head>
+<body>
+
+  <h2>API Integration - Random User</h2>
+  <button onclick="fetchUser()">Fetch Random User</button>
+
+  <div class="user-card" id="userCard" style="display: none;">
+    <img id="userImg" src="" alt="User Image" />
+    <p id="userName"></p>
+    <p id="userEmail"></p>
+  </div>
+
+  <script>
+    async function fetchUser() {
+      const response = await fetch('https://randomuser.me/api/');
+      const data = await response.json();
+      const user = data.results[0];
+
+      document.getElementById('userImg').src = user.picture.medium;
+      document.getElementById('userName').innerText = `Name: ${user.name.first} ${user.name.last}`;
+      document.getElementById('userEmail').innerText = `Email: ${user.email}`;
+      document.getElementById('userCard').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
