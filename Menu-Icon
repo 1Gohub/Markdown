@@ -1,0 +1,30 @@
+Display the image <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings Menu Icon</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .settings-icon {
+      font-size: 60px;
+      color: #333;
+      cursor: pointer;
+    }
+  </style>
+  <!-- Load Font Awesome for gear icon -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Settings Gear Icon -->
+  <i class="fas fa-cog settings-icon"></i>
+
+</body>
+</html>
